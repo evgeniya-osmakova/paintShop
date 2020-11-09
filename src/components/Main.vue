@@ -9,7 +9,7 @@
         .goods__header__count 412 товаров
         .goods__header__filters(@click="showFilters()") фильтры
         .goods__header__sort(@click="showSort()")
-          .goods__header__sort__text Сначала дорогие
+          .goods__header__sort__text {{currentSort}}
           img.goods__header__sort__img(:src="showMore" alt="show more")
 
       .goods__list
@@ -48,6 +48,10 @@ export default {
       const { currentState } = this.$store.state;
       return currentState;
     },
+    currentSort() {
+      const { currentSort } = this.$store.state;
+      return currentSort || 'Сначала дорогие';
+    },
     goods() {
       const { currentFilters, currentSort, catalog } = this.$store.state;
       const filtersNames = Object.keys(currentFilters);
@@ -63,7 +67,7 @@ export default {
         return true;
       });
       if (currentSort) {
-        return (currentSort === 'up')
+        return (currentSort === 'Сначала недорогие')
           ? filteredCatalog.sort((a, b) => (a.price > b.price ? 1 : -1))
           : filteredCatalog.sort((a, b) => (a.price < b.price ? 1 : -1));
       }

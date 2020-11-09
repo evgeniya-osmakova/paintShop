@@ -2,9 +2,9 @@
   .modal-sorting(v-if="currentState === 'showSort'")
     .modal
       .sorting
-        .sorting__item(@click="addSort('down')")
+        .sorting__item(@click="addSort('Сначала дорогие')")
           .sorting__item__text сначала дорогие
-        .sorting__item(@click="addSort('up')")
+        .sorting__item(@click="addSort('Сначала недорогие')")
           .sorting__item__text сначала недорогие
         .sorting__item
           .sorting__item__text сначала популярные
