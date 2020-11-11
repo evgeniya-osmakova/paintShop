@@ -8,23 +8,22 @@
       a.breadcrumbs__item краски
 
     section.carousel(:class="currentSlide")
-      .carousel__arrow_left
-        .carousel__arrow__img
-          img.carousel__arrow_left__img(
+      .carousel__arrow-left
+        img.arrow-img.arrow-left__img(
             :src="arrow", alt="arrow left")(@click="changeSlide('previous')")
 
-      .carousel__center_area
+      .carousel__center-area
         .title
           .title__header {{title}}
           .title__description {{text}}
         .slider
           .slider__dots(v-for="item in slides" :key="item.id")
-            img.slider__dots__item(:src="ellipse", alt="dot"
-              :class="currentSlideID === item.id ? 'slider__dots__item--active': 'slider__dots__item'",
+            img.dots-item(:src="ellipse", alt="dot"
+              :class="currentSlideID === item.id ? 'dots-item, dots-item--active': 'dots-item'",
               @click="showSlide(item.id)")
 
-      .carousel__arrow_right
-        img.carousel__arrow__img(:src="arrow", alt="arrow right")(@click="changeSlide('next')")
+      .carousel__arrow-right
+        img.arrow-img(:src="arrow", alt="arrow right")(@click="changeSlide('next')")
 </template>
 
 <script>
@@ -138,22 +137,12 @@ export default {
   align-items: center;
   justify-content: space-around;
 
-  &__arrow_left {
+  &__arrow-left {
     padding-left: 420px;
     padding-top: 250px;
-
-    &__img {
-      transform: scale(-1, 1);
-    }
   }
 
-  &__arrow__img {
-    cursor: pointer;
-    color: #FFFFFF;
-    height: 40px;
-  }
-
-  &__center_area {
+  &__center-area {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -161,10 +150,20 @@ export default {
     padding-top: 200px;
   }
 
-  &__arrow_right {
+  &__arrow-right {
     padding-right: 420px;
     padding-top: 250px;
   }
+}
+
+.arrow-img {
+  cursor: pointer;
+  color: #FFFFFF;
+  height: 40px;
+}
+
+.arrow-left__img {
+  transform: scale(-1, 1);
 }
 
 .slide0 {
@@ -215,20 +214,18 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &__item {
-      width: 6px;
-      height: 6px;
-      background: #FFFFFF;
-      opacity: 0.2;
-      border-radius: 16px;
-      cursor: pointer;
-
-      &--active {
-        color: #FFFFFF;
-        opacity: 1;
-      }
-    }
+  }
+}
+.dots-item {
+  width: 6px;
+  height: 6px;
+  background: #FFFFFF;
+  opacity: 0.2;
+  border-radius: 16px;
+  cursor: pointer;
+  &--active {
+    color: #FFFFFF;
+    opacity: 1;
   }
 }
 </style>

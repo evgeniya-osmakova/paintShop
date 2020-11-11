@@ -2,39 +2,39 @@
   .modal-basket(v-if="currentState === 'showBasket'")
     .modal
       .basket
-        .upper_block
-          .upper_block__header
-            .upper_block__header__name Корзина
-            .upper_block__header__close_sign(@click="closeBasket")
-              img.upper_block__header__close_sign__back(:src="exit", alt="exit")
-          .upper_block__info
-            .upper_block__info__count {{totalCount}}
-            .upper_block__info__clear_btn(@click="clearBasket") очистить список
-          .upper_block__goods
+        .upper-block
+          .upper-block__header.upper-header
+            .upper-header__name Корзина
+            .upper-header__close-sign.close-sign(@click="closeBasket")
+              img.close-sign__img(:src="exit", alt="exit")
+          .upper-block__info.upper-info
+            .upper-info__count {{totalCount}}
+            .upper-info__clear-btn(@click="clearBasket") очистить список
+          .upper-block__goods
             .line(v-for="item in goods" :key="item.id")
-              .item
-                .item__left_block(:class="item.deleted ? 'item--deleted' : ''")
-                  img.item__left_block__photo(:src="item.image" alt="paint photo")
-                  .item__left_block__info
-                    .item__left_block__info__name {{item.name}}
-                    .item__left_block__info__price {{item.price}} ₽
-                .item__right_block
-                  .item__right_block__count(:class="item.deleted ? 'item--deleted' : ''")
-                    .item__right_block__count__sign(@click="deleteItem(item.id)") -
-                    .item__right_block__count__number {{item.count}}
-                    .item__right_block__count__sign(@click="addItem(item.id)") +
-                  .item__right_block__sign
-                    img.item__right_block__sign__delete(v-if="!item.deleted"
+              .product-item
+                .product-item__left-block.product-left(:class="item.deleted ? 'product-item__left-block, product-item__left-block--deleted' : 'product-item__left-block'")
+                  img.product-left__photo(:src="item.image" alt="paint photo")
+                  .product-left__info.product-info
+                    .product-info__name {{item.name}}
+                    .product-info__price {{item.price}} ₽
+                .product-item__right-block.product-right
+                  .product-right__count.product-count(:class="item.deleted ? 'item--deleted' : ''")
+                    .product-count__sign(@click="deleteItem(item.id)") -
+                    .product-count__number {{item.count}}
+                    .product-count__sign(@click="addItem(item.id)") +
+                  .product-right__sign.product-sign
+                    img.product-sign__delete(v-if="!item.deleted"
                       :src="x" alt="delete" @click="deleteAll(item.id, item.count)")
-                    img.item__right_block__sign__return(v-if="item.deleted"
+                    img.product-sign__return(v-if="item.deleted"
                       :src="repeat" alt="return" @click="returnAll(item.id, item.count)")
 
-        .bottom_block
-          .bottom_block__total_count
-            .bottom_block__total_sum__text Итого
-            .bottom_block__total_sum__number {{totalSum}}₽
-          .bottom_block__order_btn
-            .bottom_block__order_btn__text оформить заказ
+        .bottom-block
+          .bottom-block__total-sum.bottom-count
+            .bottom-count__text Итого
+            .bottom-count__number {{totalSum}}₽
+          .bottom-block__order-btn.bottom-btn
+            .bottom-btn__text оформить заказ
 
     .modal-overlay
 </template>
@@ -164,7 +164,7 @@ export default {
     justify-content: space-between;
   }
 
-  .upper_block {
+  .upper-block {
     margin: 30px;
     padding-top: 32px;
     display: flex;
@@ -175,44 +175,12 @@ export default {
       justify-content: space-between;
       align-items: center;
       padding-bottom: 80px;
-
-      &__name {
-        font-weight: 500;
-        font-size: 30px;
-        letter-spacing: -0.04em;
-      }
-
-      &__close_sign {
-        display: flex;
-        cursor: pointer;
-
-        &____back {
-          position: relative;
-        }
-
-        &____front {
-          position: absolute;
-          left: 24px;
-        }
-      }
     }
 
     &__info {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      &__count {
-        font-size: 14px;
-        font-weight: 400;
-      }
-
-      &__clear_btn {
-        cursor: pointer;
-        opacity: 0.4;
-        font-weight: 300;
-        font-size: 14px;
-      }
     }
 
     &__goods {
@@ -226,120 +194,155 @@ export default {
     border-top: 1px solid lightgray;
   }
 
-  .item {
+  .product-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 12px;
     padding-bottom: 12px;
 
-    &--deleted {
-      opacity: 0.2;
-    }
-
-    &__left_block {
+    &__left-block {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-
-      &__photo {
-        height: 96px;
-        width: 96px;
-      }
-
-      &__info {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-
-        &__name {
-          font-weight: 300;
-          font-size: 16px;
-          letter-spacing: 0.02em;
-        }
-
-        &__price {
-          font-weight: 600;
-          font-size: 16px;
-        }
+      &--deleted {
+        opacity: 0.2;
       }
     }
 
-    &__right_block {
+    &__right-block {
       display: flex;
       justify-content: flex-end;
       align-items: center;
       column-gap: 43px;
-
-      &__count {
-        display: flex;
-        column-gap: 20px;
-        align-items: center;
-
-        &__sign {
-          cursor: pointer;
-          background: #F2F2F2;
-          border-radius: 4px;
-          padding: 12px 15px;
-        }
-
-        &__number {
-          cursor: pointer;
-          font-weight: 400;
-          font-size: 16px;
-        }
-      }
-
-      &__sign {
-        align-items: center;
-        cursor: pointer;
-
-        &__delete {}
-
-        &__return {
-          opacity: 1;
-        }
-      }
     }
   }
 
-  .bottom_block {
+  .bottom-block {
     margin: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    &__total_sum {
+    &__total-sum {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
-
-      &__text {
-        font-weight: 400;
-        font-size: 16px;
-      }
-
-      &__number {
-        font-weight: 500;
-        font-size: 30px;
-        letter-spacing: -0.02em;
-      }
     }
 
-    &__order_btn {
+    &__order-btn {
       padding: 20px 57px;
       background: #7BB899;
       border-radius: 4px;
-
-      &__text {
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 12px;
-        text-align: center;
-      }
     }
   }
 
+  .upper-header{
+    &__name {
+      font-weight: 500;
+      font-size: 30px;
+      letter-spacing: -0.04em;
+    }
+
+    &__close_sign {
+      display: flex;
+      cursor: pointer;
+    }
+  }
+
+  .upper-info{
+    &__count {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    &__clear-btn {
+      cursor: pointer;
+      opacity: 0.4;
+      font-weight: 300;
+      font-size: 14px;
+    }
+  }
+
+  .product-left{
+    &__photo {
+      height: 96px;
+      width: 96px;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+
+  .product-info{
+    &__name {
+      text-align: left;
+      font-weight: 300;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    &__price {
+      text-align: left;
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+
+  .product-right{
+    &__count {
+      display: flex;
+      column-gap: 20px;
+      align-items: center;
+    }
+
+    &__sign {
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+  .product-count{
+    &__sign {
+      cursor: pointer;
+      background: #F2F2F2;
+      border-radius: 4px;
+      padding: 12px 15px;
+    }
+
+    &__number {
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+  .product-sign{
+    &__return {
+      opacity: 1;
+    }
+  }
+  .bottom-count{
+    &__text {
+      font-weight: 400;
+      font-size: 16px;
+    }
+
+    &__number {
+      font-weight: 500;
+      font-size: 30px;
+      letter-spacing: -0.02em;
+    }
+  }
+  .bottom-btn{
+    &__text {
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
 </style>

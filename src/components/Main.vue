@@ -5,26 +5,26 @@
     .show_modal_filters
       ModalFilters
     .goods
-      .goods__header
-        .goods__header__count 412 товаров
-        .goods__header__filters(@click="showFilters()") фильтры
-        .goods__header__sort(@click="showSort()")
-          .goods__header__sort__text {{currentSort}}
-          img.goods__header__sort__img(:src="showMore" alt="show more")
+      .goods__header.goods-header
+        .goods-header__count 412 товаров
+        .goods-header__filters(@click="showFilters()") фильтры
+        .goods-header__sort.header-sort(@click="showSort()")
+          .header-sort__text {{currentSort}}
+          img.header-sort__img(:src="showMore" alt="show more")
 
-      .goods__list
-        .goods__list__item(v-for="item in goods"
+      .goods__list.goods-list
+        .goods-list__item.goods-item(v-for="item in goods"
           :key="item.id" @mouseover="item.selected = true" @mouseleave="item.selected = false")
-          .goods__list__item__img
+          .goods-item__img
             img(v-if="!item.selected" :src="item.image" alt="paint photo")
             img(v-if="item.selected" :src="hover" alt="paint photo")
-          .goods__list__item__name {{item.name}}
-          .goods__list__item__footer
-            .goods__list__item__footer__price {{item.price}} ₽
-            .goods__list__item__footer__add_sign(v-if="item.selected" @click="addToBasket(item.id)")
+          .goods-item__name {{item.name}}
+          .goods-item__footer.goods-footer
+            .goods-footer__price {{item.price}} ₽
+            .goods-footer__add_sign(v-if="item.selected" @click="addToBasket(item.id)")
               .sign
                 img(:src="plus", alt="add")
-            .goods__list__item__footer__mobile(@click="addToBasket(item.id)") +
+            .goods-footer__mobile(@click="addToBasket(item.id)") +
 </template>
 
 <script>
@@ -139,42 +139,6 @@ export default {
       @media (max-width: $mobile) {
         padding-right: 24px;
       }
-
-      &__count {
-        font-weight: 500;
-        font-size: 12px;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        @media (max-width: $mobile) {
-          display: none;
-        }
-      }
-
-      &__filters {
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 12px;
-        cursor: pointer;
-        @media (min-width: $mobile + 1px) {
-          display: none;
-        }
-      }
-
-      &__sort {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-
-        &__text {
-          font-weight: 500;
-          font-size: 12px;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-        }
-      }
     }
 
     &__list {
@@ -183,74 +147,116 @@ export default {
       row-gap: 55px;
       column-gap: 24px;
       padding-bottom: 147px;
-
-      &__item {
-        padding-left: 24px;
-        display: flex;
-        flex-direction: column;
-        column-gap: 16px;
-        border-bottom: 1px solid lightgray;
-
-        &__img {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 278px;
-          width: 278px;
-          padding-bottom: 16px;
-        }
-
-        &__name {
-          font-weight: 300;
-          font-size: 16px;
-          letter-spacing: 0.02em;
-          width: 278px;
-          padding-bottom: 24px;
-          text-align: left;
-        }
-
-        &__footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          height: 110px;
-
-          &__price {
-            font-weight: 600;
-            font-size: 16px;
-          }
-
-          &__add_sign {
-            background: #7BB899;
-            border-radius: 8px;
-            padding: 10px 34px;
-            cursor: pointer;
-            &:active {
-              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            }
-            @media (max-width: $mobile) {
-              display: none;
-            }
-          }
-
-          &__mobile {
-            cursor: pointer;
-            background: #F2F2F2;
-            border-radius: 6px;
-            padding: 7px 20px;
-            font-weight: bolder;
-            @media (min-width: $mobile + 1px) {
-              display: none;
-            }
-            &:active {
-              box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-            }
-          }
-        }
-      }
     }
   }
 
+  .goods-header{
+    &__count {
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      @media (max-width: $mobile) {
+        display: none;
+      }
+    }
+
+    &__filters {
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 12px;
+      cursor: pointer;
+      @media (min-width: $mobile + 1px) {
+        display: none;
+      }
+    }
+
+    &__sort {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+  }
+
+  .header-sort {
+    &__text {
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+  }
+  .goods-list {
+    &__item {
+      padding-left: 24px;
+      display: flex;
+      flex-direction: column;
+      column-gap: 16px;
+      border-bottom: 1px solid lightgray;
+    }
+  }
+  .goods-item {
+    &__img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 278px;
+      width: 278px;
+      padding-bottom: 16px;
+    }
+
+    &__name {
+      font-weight: 300;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      width: 278px;
+      padding-bottom: 24px;
+      text-align: left;
+    }
+
+    &__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 110px;
+    }
+  }
+  .goods-footer{
+    &__price {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    &__add_sign {
+      background: #7BB899;
+      border-radius: 8px;
+      padding: 10px 34px;
+      cursor: pointer;
+      &:active {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
+      @media (max-width: $mobile) {
+        display: none;
+      }
+    }
+
+    &__mobile {
+      cursor: pointer;
+      background: #F2F2F2;
+      border-radius: 6px;
+      padding: 7px 20px;
+      font-weight: bolder;
+      @media (min-width: $mobile + 1px) {
+        display: none;
+      }
+      &:active {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
+    }
+  }
   .sign {
     display: flex;
     justify-content: center;

@@ -2,14 +2,14 @@
   .modal-sorting(v-if="currentState === 'showSort'")
     .modal
       .sorting
-        .sorting__item(@click="addSort('Сначала дорогие')")
-          .sorting__item__text сначала дорогие
-        .sorting__item(@click="addSort('Сначала недорогие')")
-          .sorting__item__text сначала недорогие
-        .sorting__item
-          .sorting__item__text сначала популярные
-        .sorting__item
-          .sorting__item__text сначала новые
+        .sorting__item.sorting-item(@click="addSort('Сначала дорогие')")
+          .sorting-item__text сначала дорогие
+        .sorting__item.sorting-item(@click="addSort('Сначала недорогие')")
+          .sorting-item__text сначала недорогие
+        .sorting__item.sorting-item
+          .sorting-item__text сначала популярные
+        .sorting__item.sorting-item
+          .sorting-item__text сначала новые
 
     .modal-overlay(@click="showCatalog")
 </template>
@@ -72,20 +72,22 @@ export default {
       cursor: pointer;
       display: flex;
       justify-content: flex-start;
+    }
+  }
 
-      &__text {
-        padding-top: 16px;
-        padding-bottom: 16px;
-        padding-left: 24px;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        font-weight: 500;
-        font-size: 12px;
-      }
+  .sorting-item {
+    &__text {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      padding-left: 24px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 12px;
+    }
 
-      &:hover {
-        background: #7BB899;
-      }
+    &:hover {
+      background: #7BB899;
     }
   }
 </style>
