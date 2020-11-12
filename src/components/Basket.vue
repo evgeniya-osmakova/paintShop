@@ -128,6 +128,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../variables.scss";
 
   .modal {
     display: flex;
@@ -337,6 +338,13 @@ export default {
     }
   }
   .bottom-btn{
+    padding: 20px 57px;
+    background: #7BB899;
+    border-radius: 4px;
+    @media (max-width: $basketMax) {
+      padding: 10px 10px;
+    }
+
     &__text {
       letter-spacing: 0.06em;
       text-transform: uppercase;
