@@ -26,7 +26,7 @@ export default {
         { id: 1, name: 'inStock', text: 'в наличии' },
         { id: 2, name: 'contract', text: 'контрактные' },
         { id: 3, name: 'exclusive', text: 'эксклюзивные' },
-        { id: 3, name: 'sale', text: 'распродажа' },
+        { id: 4, name: 'sale', text: 'распродажа' },
       ];
     },
   },

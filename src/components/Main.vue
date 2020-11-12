@@ -50,7 +50,11 @@ export default {
     },
     currentSort() {
       const { currentSort } = this.$store.state;
-      return currentSort || 'Сначала дорогие';
+      const mapping = {
+        down: 'Сначала дорогие',
+        up: 'Сначала недорогие',
+      };
+      return mapping[currentSort] || 'Сначала дорогие';
     },
     goods() {
       const { currentFilters, currentSort, catalog } = this.$store.state;
@@ -67,7 +71,7 @@ export default {
         return true;
       });
       if (currentSort) {
-        return (currentSort === 'Сначала недорогие')
+        return (currentSort === 'up')
           ? filteredCatalog.sort((a, b) => (a.price > b.price ? 1 : -1))
           : filteredCatalog.sort((a, b) => (a.price < b.price ? 1 : -1));
       }
