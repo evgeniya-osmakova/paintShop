@@ -11,6 +11,7 @@ export default {
 <style scoped>
 .footer {
   width: 100vw;
+  max-width: 1920px;
   background: black;
 }
 </style>

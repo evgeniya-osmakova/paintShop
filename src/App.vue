@@ -51,9 +51,15 @@ export default {
   display: grid;
   grid-template-areas: 'header' 'upper_block' 'main_block' 'footer';
   grid-template-rows: 104px 560px auto 280px;
+  max-width: 1920px;
   @media (max-width: $carouselMax) {
     grid-template-areas: 'header' 'upper_block' 'mobile_title''main_block' 'footer';
     grid-template-rows: 104px 74px 120px auto 140px;
+    justify-content: center;
+  }
+  @media (min-width: $maxScreen) {
+    padding-left: calc((100vw - 1920px) / 2);
+    padding-right: calc((100vw - 1920px) / 2);
   }
 }
 

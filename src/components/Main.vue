@@ -91,6 +91,7 @@ export default {
 <style scoped lang="scss">
 @import "../variables.scss";
   .main {
+    max-width: 1920px;
     overflow-x: hidden;
     grid-area: main_block;
     display: flex;

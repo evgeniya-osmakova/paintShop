@@ -72,6 +72,7 @@ export default {
 <style scoped lang="scss">
 @import "../variables.scss";
 .upper_block {
+  max-width: 1920px;
   grid-area: upper_block;
   padding: 0;
   margin: 0;
@@ -118,6 +119,7 @@ export default {
 }
 
 .carousel {
+  max-width: 1920px;
   @media (max-width: $carouselMax) {
     display: none;
   }

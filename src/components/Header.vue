@@ -65,6 +65,7 @@ export default {
 <style scoped lang="scss">
   @import "../variables.scss";
   .header {
+    max-width: 1920px;
     overflow-x: hidden;
     grid-area: header;
     height: 104px;
