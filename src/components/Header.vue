@@ -72,7 +72,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @media (max-width: $mobile) {
+    @media (max-width: $headerMax) {
       padding: 0;
       margin: 0;
       border-bottom: 1px solid lightgray;
@@ -85,7 +85,7 @@ export default {
       justify-content: space-between;
       gap: 40px;
       padding-left: 64px;
-      @media (max-width: $mobile) {
+      @media (max-width: $headerMax) {
         padding-left: 0;
       }
     }
@@ -93,7 +93,7 @@ export default {
   .header-left {
     &__mobile {
       display: none;
-      @media (max-width: $mobile) {
+      @media (max-width: $headerMax) {
         padding-left: 24px;
         display: flex;
       }
@@ -115,7 +115,7 @@ export default {
       color: black;
     }
 
-    @media (max-width: $mobile) {
+    @media (max-width: $headerMax) {
       display: none;
     }
   }
@@ -133,7 +133,7 @@ export default {
       align-items: center;
       gap: 25px;
       padding-right: 40px;
-      @media (max-width: $mobile) {
+      @media (max-width: $headerMax) {
         padding-right: 24px;
       }
     }
@@ -151,13 +151,13 @@ export default {
       text-decoration: none;
       color: black;
     }
-    @media (max-width: $mobile) {
+    @media (max-width: $headerMax) {
       display: none;
     }
   }
   .header-info {
     &__icon {
-      @media (max-width: $mobile) {
+      @media (max-width: $headerMax) {
         display: none;
       }
     }

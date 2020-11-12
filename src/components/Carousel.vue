@@ -88,7 +88,7 @@ export default {
   padding-left: 64px;
   gap: 8px;
 
-  @media (max-width: $mobile) {
+  @media (max-width: $carouselMax) {
     padding-top: 16px;
     padding-left: 24px;
   }
@@ -100,7 +100,7 @@ export default {
     opacity: 0.3;
     color: #FFFFFF;
     text-decoration: none;
-    @media (max-width: $mobile) {
+    @media (max-width: $carouselMax) {
       color: #1F2020;
     }
   }
@@ -111,14 +111,14 @@ export default {
     width: 3px;
     height: 3px;
     border-radius: 16px;
-    @media (max-width: $mobile) {
+    @media (max-width: $carouselMax) {
       opacity: 1;
     }
   }
 }
 
 .carousel {
-  @media (max-width: $mobile) {
+  @media (max-width: $carouselMax) {
     display: none;
   }
   z-index: 1;
@@ -148,6 +148,8 @@ export default {
     align-items: center;
     row-gap: 130px;
     padding-top: 200px;
+    width: 400px;
+    min-width: 400px;
   }
 
   &__arrow-right {

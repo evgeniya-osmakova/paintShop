@@ -13,7 +13,7 @@ export default {
 
   .mobile_header {
     display: none;
-    @media (max-width: $mobile) {
+    @media (max-width: $carouselMax) {
       display: flex;
       align-items: center;
       justify-content: flex-start;

@@ -39,7 +39,7 @@ export default {
 @import "../variables.scss";
 
 .modal {
-  @media (max-width: $mobile) {
+  @media (max-width: $bodyMax) {
     display: flex;
     top: 0;
     right: 0;
@@ -50,7 +50,7 @@ export default {
 }
 
 .modal-overlay {
-  @media (max-width: $mobile) {
+  @media (max-width: $bodyMax) {
     z-index: 1000;
     position: fixed;
     top:0;

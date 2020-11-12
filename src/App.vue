@@ -51,7 +51,7 @@ export default {
   display: grid;
   grid-template-areas: 'header' 'upper_block' 'main_block' 'footer';
   grid-template-rows: 104px 560px auto 280px;
-  @media (max-width: $mobile) {
+  @media (max-width: $carouselMax) {
     grid-template-areas: 'header' 'upper_block' 'mobile_title''main_block' 'footer';
     grid-template-rows: 104px 74px 120px auto 140px;
   }

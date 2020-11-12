@@ -97,7 +97,7 @@ export default {
     gap: 120px;
     padding-top: 72px;
     padding-left: 64px;
-    @media (max-width: $mobile) {
+    @media (max-width: $bodyMax) {
       padding: 0;
       margin: 0;
       width: 100vw;
@@ -107,13 +107,13 @@ export default {
   }
 
   .show_filters {
-    @media (max-width: $mobile) {
+    @media (max-width: $bodyMax) {
       display: none;
     }
   }
 
   .show_modal_filters {
-    @media (min-width: $mobile + 1px) {
+    @media (min-width: $bodyMax) {
       display: none;
       width: 100vw;
     }
@@ -124,7 +124,7 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 44px;
-    @media (max-width: $mobile) {
+    @media (max-width: $bodyMax) {
       padding-left: 24px;
       width: 100vw;
       overflow-x: hidden;
@@ -132,11 +132,12 @@ export default {
 
     &__header {
       padding-left: 24px;
-      padding-right: 100px;
+      padding-right: 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      @media (max-width: $mobile) {
+      @media (max-width: $bodyMax) {
+        padding-top: 50px;
         padding-right: 24px;
       }
     }
@@ -156,7 +157,7 @@ export default {
       font-size: 12px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      @media (max-width: $mobile) {
+      @media (max-width: $bodyMax) {
         display: none;
       }
     }
@@ -167,7 +168,7 @@ export default {
       font-weight: 500;
       font-size: 12px;
       cursor: pointer;
-      @media (min-width: $mobile + 1px) {
+      @media (min-width: $bodyMax) {
         display: none;
       }
     }
@@ -238,7 +239,7 @@ export default {
       &:active {
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
       }
-      @media (max-width: $mobile) {
+      @media (max-width: $bodyMax) {
         display: none;
       }
     }
@@ -249,7 +250,7 @@ export default {
       border-radius: 6px;
       padding: 7px 20px;
       font-weight: bolder;
-      @media (min-width: $mobile + 1px) {
+      @media (min-width: $bodyMax) {
         display: none;
       }
       &:active {
