@@ -14,24 +14,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     mobileMode: false,
-    slides: [
-      {
-        id: 0,
-        title: 'Краски',
-        text: 'Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!',
-      },
-      {
-        id: 1,
-        title: 'Покупайте',
-        text: 'У нас лучшие цены, только проверенные временем производители',
-      },
-      {
-        id: 2,
-        title: 'Выгодно',
-        text: 'Скидки для постоянных покупателей, акции и распродажи',
-      },
-    ],
-    activeSlideIndex: 0,
     currentState: 'showCatalog',
     currentFilters: {
       new: false,
@@ -242,22 +224,6 @@ export default new Vuex.Store({
     ],
   },
   mutations: {
-    changeSlide: (state, { direction }) => {
-      if (direction === 'next') {
-        if (state.activeSlideIndex === state.slides.length - 1) {
-          state.activeSlideIndex = 0;
-        } else {
-          state.activeSlideIndex += 1;
-        }
-      } else if (state.activeSlideIndex === 0) {
-        state.activeSlideIndex = state.slides.length - 1;
-      } else {
-        state.activeSlideIndex -= 1;
-      }
-    },
-    showSlide: (state, { id }) => {
-      state.activeSlideIndex = id;
-    },
     addToBasket: (state, payload) => {
       state.countItemsInBasket += 1;
       const { newId } = payload;

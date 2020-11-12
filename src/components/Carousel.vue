@@ -14,12 +14,12 @@
 
       .carousel__center-area
         .title
-          .title__header {{title}}
-          .title__description {{text}}
+          .title__header {{slides[activeSlideIndex].title}}
+          .title__description {{slides[activeSlideIndex].text}}
         .slider
           .slider__dots(v-for="item in slides" :key="item.id")
             img.dots-item(:src="ellipse", alt="dot"
-              :class="currentSlideID === item.id ? 'dots-item, dots-item--active': 'dots-item'",
+              :class="activeSlideIndex === item.id ? 'dots-item, dots-item--active': 'dots-item'",
               @click="showSlide(item.id)")
 
       .carousel__arrow-right
@@ -34,36 +34,51 @@ import background from './background.png';
 export default {
   name: 'Carousel',
   data() {
-    return { ellipse, arrow, background };
+    return {
+      ellipse,
+      arrow,
+      background,
+      activeSlideIndex: 0,
+      slides: [
+        {
+          id: 0,
+          title: 'Краски',
+          text: 'Идеально подходят для стен и других поверхностей. Найди свой идеальный цвет!',
+        },
+        {
+          id: 1,
+          title: 'Покупайте',
+          text: 'У нас лучшие цены, только проверенные временем производители',
+        },
+        {
+          id: 2,
+          title: 'Выгодно',
+          text: 'Скидки для постоянных покупателей, акции и распродажи',
+        },
+      ],
+    };
   },
   computed: {
     currentSlide() {
-      const { activeSlideIndex } = this.$store.state;
-      return `slide${activeSlideIndex}`;
-    },
-    slides() {
-      const { slides } = this.$store.state;
-      return slides;
-    },
-    title() {
-      const { slides, activeSlideIndex } = this.$store.state;
-      return slides[activeSlideIndex].title;
-    },
-    text() {
-      const { slides, activeSlideIndex } = this.$store.state;
-      return slides[activeSlideIndex].text;
-    },
-    currentSlideID() {
-      const { activeSlideIndex } = this.$store.state;
-      return activeSlideIndex;
+      return `slide${this.activeSlideIndex}`;
     },
   },
   methods: {
     changeSlide(direction) {
-      this.$store.commit('changeSlide', { direction });
+      if (direction === 'next') {
+        if (this.activeSlideIndex === this.slides.length - 1) {
+          this.activeSlideIndex = 0;
+        } else {
+          this.activeSlideIndex += 1;
+        }
+      } else if (this.activeSlideIndex === 0) {
+        this.activeSlideIndex = this.slides.length - 1;
+      } else {
+        this.activeSlideIndex -= 1;
+      }
     },
     showSlide(id) {
-      this.$store.commit('showSlide', { id });
+      this.activeSlideIndex = id;
     },
   },
 };
