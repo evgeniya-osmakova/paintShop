@@ -190,6 +190,11 @@ export default {
     }
   }
 
+  .close-sign {
+    &__img {
+      cursor: pointer;
+    }
+  }
   .line {
     margin-top: 10px;
     border-top: 1px solid lightgray;
