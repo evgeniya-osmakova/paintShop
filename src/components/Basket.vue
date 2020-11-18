@@ -308,7 +308,7 @@ export default {
   .product-right{
     &__count {
       display: flex;
-      column-gap: 20px;
+      gap: 20px;
       align-items: center;
     }
 
