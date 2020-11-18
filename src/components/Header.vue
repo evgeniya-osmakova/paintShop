@@ -96,6 +96,7 @@ export default {
       display: none;
       @media (max-width: $headerMax) {
         padding-left: 24px;
+        padding-right: 5px;
         display: flex;
       }
     }

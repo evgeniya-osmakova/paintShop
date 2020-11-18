@@ -201,7 +201,13 @@ export default {
     align-items: center;
     padding-top: 12px;
     padding-bottom: 12px;
-
+    @media (max-width: $basketMax) {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 15px;
+    }
     &__left-block {
       display: flex;
       align-items: center;
@@ -268,8 +274,8 @@ export default {
 
   .product-left{
     &__photo {
-      height: 96px;
-      width: 96px;
+      height: 100%;
+      max-height: 96px;
     }
 
     &__info {
