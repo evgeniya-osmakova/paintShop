@@ -209,8 +209,9 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 278px;
-      width: 278px;
+      height: 100%;
+      max-height: 278px;
+      max-width: 278px;
       padding-bottom: 16px;
     }
 
