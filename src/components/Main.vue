@@ -16,8 +16,8 @@
         .goods-list__item.goods-item(v-for="item in goods"
           :key="item.id" @mouseover="item.selected = true" @mouseleave="item.selected = false")
           .goods-item__img
-            img(v-if="!item.selected" :src="item.image" alt="paint photo")
-            img(v-if="item.selected" :src="hover" alt="paint photo")
+            img(v-if="!item.selected || mobileMode" :src="item.image" alt="paint photo")
+            img(v-if="item.selected && !mobileMode" :src="hover" alt="paint photo")
           .goods-item__name {{item.name}}
           .goods-item__footer.goods-footer
             .goods-footer__price {{item.price}} ₽
@@ -41,7 +41,12 @@ export default {
     Filters,
   },
   data() {
-    return { hover, plus, showMore };
+    return {
+      hover,
+      plus,
+      showMore,
+      mobileMode: false,
+    };
   },
   computed: {
     currentState() {
@@ -88,6 +93,13 @@ export default {
     showFilters() {
       this.$store.commit('showFilters');
     },
+    updatedMobileMode() {
+      this.mobileMode = window.innerWidth < 990;
+    },
+  },
+  created() {
+    window.addEventListener('resize', this.updatedMobileMode);
+    this.updatedMobileMode();
   },
 };
 </script>
